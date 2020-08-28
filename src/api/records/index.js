@@ -45,9 +45,11 @@ const router = new Router()
  * @FormParam startDate date in a “YYYY-MM-DD” format used to filter the data.
  * @apiParam startDate date in a “YYYY-MM-DD” format used to filter the data.
  * @apiParam endDate date in a “YYYY-MM-DD” format used to filter the data.
- * @apiParam minCount Records's minimum counts used for filtering the data. Sum of the “count” array in the documents should be between “minCount” and “maxCount”
- * @apiParam maxCount Records's maximum count counts used for filtering the data. Sum of the “count” array in the documents should be between “minCount” and “maxCount”
- * @apiSuccess {Object} records Records's data.
+ * @apiParam minCount Records's minimum counts used for filtering the data. Sum of the “count” array in the documents should be between “minCount” and “maxCount”.
+ * @apiParam maxCount Records's maximum count counts used for filtering the data. Sum of the “count” array in the documents should be between “minCount” and “maxCount”.
+ * @apiSuccess {String} code status of the request. 0 means success. Other values may be used for errors that you define.
+ * @apiSuccess {String} msg  description of the code. You can set it to “success” for successful requests.
+ * @apiSuccess {Array} records  filtered items according to the request. This array should include items of “key”, “createdAt” and “totalCount” which is the sum of the “counts” array in the document.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Records not found.
  */
