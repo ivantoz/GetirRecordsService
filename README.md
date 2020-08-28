@@ -87,7 +87,7 @@ src/
 ├─ services/
 │  ├─ express/
 │  ├─ mongoose/
-│  └─ record-service/
+│  └─ response
 ├─ app.js
 ├─ config.js
 └─ index.js
