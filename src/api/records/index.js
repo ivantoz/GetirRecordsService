@@ -8,22 +8,22 @@ const router = new Router()
 
 /**
  * @api {post} /records Search records
- * @apiName SearchRecords
+ * @apiName Search Records
  * @apiGroup Records
- * *@apiParamExample {json} Request-Example:
+ * *@apiParamExample {json} Request-Payload:
  *  {
  *    "startDate": "2016-01-26",
  *    "endDate": "2018-02-20",
  *    "minCount": 2700,
  *    "maxCount": 3000
  *  }
- *  @apiErrorExample {json} Error-Response:
+ *  @apiErrorExample {json} Error-Response-Payload:
  *     HTTP/1.1 404 Not Found
  *     {
  *       "code": 404
  *       "msg": "Search cannot be performed"
  *     }
- * @apiSuccessExample {json} Success-Response:
+ * @apiSuccessExample {json} Success-Response-Payload:
  *     HTTP/1.1 200 OK
  *     {
  *        "code": 0,

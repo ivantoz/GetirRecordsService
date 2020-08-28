@@ -27,7 +27,7 @@
 
 ### Success Response
 
-Success-Response:
+Success-Response-Payload:
 
 ```
 HTTP/1.1 200 OK
@@ -50,7 +50,7 @@ HTTP/1.1 200 OK
 ```
 ### Error Response
 
-Error-Response:
+Error-Response-Payload:
 
 ```
 HTTP/1.1 404 Not Found
