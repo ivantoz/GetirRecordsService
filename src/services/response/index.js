@@ -1,6 +1,9 @@
-export const success = (res, status) => (entity) => {
-  if (entity) {
-    res.status(status || 200).json(entity)
+export const success = (res, status) => (records) => {
+  if (records.length) {
+    const resp = { code: 0, msg: 'Success', records }
+    res.status(status || 200).json(resp)
+  } else {
+    res.status(400).json({ code: 400, msg: 'Search cannot be performed' })
   }
   return null
 }
@@ -10,17 +13,5 @@ export const notFound = (res) => (entity) => {
     return entity
   }
   res.status(404).end()
-  return null
-}
-
-export const authorOrAdmin = (res, user, userField) => (entity) => {
-  if (entity) {
-    const isAdmin = user.role === 'admin'
-    const isAuthor = entity[userField] && entity[userField].equals(user.id)
-    if (isAuthor || isAdmin) {
-      return entity
-    }
-    res.status(401).end()
-  }
   return null
 }
