@@ -1,22 +1,10 @@
 import { Router } from 'express'
+import records from './records'
 
 const router = new Router()
 
-/**
- * @apiDefine master Master access only
- * You must pass `access_token` parameter or a Bearer Token authorization header
- * to access this endpoint.
- */
-/**
- * @apiDefine admin Admin access only
- * You must pass `access_token` parameter or a Bearer Token authorization header
- * to access this endpoint.
- */
-/**
- * @apiDefine user User access only
- * You must pass `access_token` parameter or a Bearer Token authorization header
- * to access this endpoint.
- */
+router.use('/records', records)
+
 /**
  * @apiDefine listParams
  * @apiParam {String} [q] Query to search.
