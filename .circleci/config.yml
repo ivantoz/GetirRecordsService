@@ -36,8 +36,6 @@ workflows:
     jobs:
       - build
       - deploy:
-          requires:
-            - build
           filters:
             branches:
-              only: master
+              only: ft-fix-failing-tests
