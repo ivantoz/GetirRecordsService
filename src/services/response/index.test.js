@@ -14,7 +14,7 @@ describe('success', () => {
   it('responds with passed object and status 200', () => {
     expect(response.success(res)(['record_object'])).toBeNull()
     expect(res.status).toBeCalledWith(200)
-    expect(res.json).toBeCalledWith({"code": 0, "msg": "Success", "records": ["record_object"]})
+    expect(res.json).toBeCalledWith({ code: 0, msg: 'Success', records: ['record_object'] })
   })
 
   it('responds with passed object and status 400', () => {

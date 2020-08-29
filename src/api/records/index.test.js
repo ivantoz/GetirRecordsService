@@ -1,9 +1,8 @@
 import supertest from 'supertest'
 import { apiRoot } from '../../config'
 import express from '../../services/express'
-import routes, { Records } from '.'
-import { recordOne, recordTwo, recordThree, recordFour, insertRecords } from '../../../test/records.fixture'
-
+import routes from '.'
+import { recordThree, insertRecords } from '../../../test/records.fixture'
 
 const app = () => express(apiRoot, routes)
 

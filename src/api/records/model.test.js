@@ -1,6 +1,5 @@
 import { Records } from '.'
-import { recordOne} from '../../../test/records.fixture'
-
+import { recordOne } from '../../../test/records.fixture'
 
 let records
 
