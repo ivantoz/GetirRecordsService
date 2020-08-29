@@ -1,4 +1,4 @@
-import { success, notFound } from '../../services/response/'
+import { success } from '../../services/response/'
 import { Records } from '.'
 
 export const create = ({ bodymen: { body } }, res, next) =>
@@ -7,7 +7,7 @@ export const create = ({ bodymen: { body } }, res, next) =>
     .then(success(res, 201))
     .catch(next)
 
-export const search = ({ bodymen: { body: { startDate, endDate, minCount, maxCount  } } }, res, next) =>
+export const search = ({ bodymen: { body: { startDate, endDate, minCount, maxCount } } }, res, next) =>
   Records.aggregate([
     {
       // Filter by dates.
@@ -44,7 +44,7 @@ export const search = ({ bodymen: { body: { startDate, endDate, minCount, maxCou
         }
       }
     },
-    {$sort: {"createdAt": -1} },
+    { $sort: { createdAt: -1 } },
     {
       // Exclude _id in resultset
       $project: {

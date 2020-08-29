@@ -1,7 +1,6 @@
 import { Router } from 'express'
 import { middleware as body } from 'bodymen'
 import { search } from './controller'
-import { schema } from './model'
 export Records, { schema } from './model'
 
 const router = new Router()
@@ -56,21 +55,21 @@ router.post('/',
   body({
     startDate: {
       type: String,
-      required: true,
+      required: true
     },
-    endDate:{
+    endDate: {
       type: String,
-      required: true,
+      required: true
     },
     minCount: {
       type: Number,
-      required: true,
+      required: true
     },
     maxCount: {
       type: Number,
-      required: true,
-    } }),
+      required: true
+    }
+  }),
   search)
-
 
 export default router

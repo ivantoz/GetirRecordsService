@@ -29,7 +29,7 @@ recordsSchema.methods = {
       key: this.key,
       value: this.value,
       counts: this.counts,
-      createdAt: this.createdAt,
+      createdAt: this.createdAt
     }
 
     return full ? {

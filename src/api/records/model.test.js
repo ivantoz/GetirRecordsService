@@ -3,7 +3,7 @@ import { Records } from '.'
 let records
 
 beforeEach(async () => {
-  records = await Records.create({ key: 'test', value: 'test', counts: [150,160], createdAt: 'test' })
+  records = await Records.create({ key: 'test', value: 'test', counts: [150, 160], createdAt: 'test' })
 })
 
 describe('view', () => {
