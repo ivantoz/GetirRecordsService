@@ -38,4 +38,4 @@ workflows:
       - deploy:
           filters:
             branches:
-              only: ft-fix-failing-tests
+              only: master
