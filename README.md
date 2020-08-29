@@ -6,6 +6,8 @@ A RESTful API for Getir
 
 See the API's [documentation](DOCS.md).
 
+See Live app on [Heroku](https://getir-records-service.herokuapp.com)
+
 ## Commands
 
 These commands are available in `package.json`.
