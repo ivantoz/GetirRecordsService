@@ -3,7 +3,7 @@ import { Records } from '.'
 
 export const create = ({ bodymen: { body } }, res, next) =>
   Records.create(body)
-    .then((records) => records.view(true))
+    .then((records) => records)
     .then(success(res, 201))
     .catch(next)
 

@@ -1,8 +1,12 @@
-# GetirRecordsService
+# Getir Records Service
+
+[![Build Status](https://circleci.com/gh/ivantoz/GetirRecordsService/tree/ft-fix-failing-tests.svg?style=shield)](https://circleci.com/gh/ivantoz/GetirRecordsService)
 
 A RESTful API for Getir
 
 See the API's [documentation](DOCS.md).
+
+See Live app on [Heroku](https://getir-records-service.herokuapp.com)
 
 ## Commands
 
