@@ -3,15 +3,7 @@ export const success = (res, status) => (records) => {
     const resp = { code: 0, msg: 'Success', records }
     res.status(status || 200).json(resp)
   } else {
-    res.status(400).json({ code: 400, msg: 'Search cannot be performed' })
+    res.status(400).json({ code: 400, msg: 'Bad request' })
   }
-  return null
-}
-
-export const notFound = (res) => (entity) => {
-  if (entity) {
-    return entity
-  }
-  res.status(404).end()
   return null
 }
