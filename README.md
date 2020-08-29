@@ -1,6 +1,6 @@
 # Getir Records Service
 
-[![Build Status](https://circleci.com/gh/ivantoz/GetirRecordsService/tree/ft-fix-failing-tests.svg?style=shield)](https://circleci.com/gh/ivantoz/GetirRecordsService)
+[![Build Status](https://circleci.com/gh/ivantoz/GetirRecordsService.svg?style=shield)](https://circleci.com/gh/ivantoz/GetirRecordsService)
 
 A RESTful API for Getir
 
