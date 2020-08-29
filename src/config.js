@@ -35,7 +35,14 @@ const config = {
       }
     }
   },
-  test: { },
+  test: {
+    mongo: {
+      uri: 'mongodb://localhost/getir-records-service-test',
+      options: {
+        debug: true
+      }
+    }
+  },
   development: {
     mongo: {
       uri: 'mongodb://localhost/getir-records-service-dev',
