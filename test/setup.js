@@ -1,9 +1,9 @@
 import { EventEmitter } from 'events'
-import MongodbMemoryServer from 'mongodb-memory-server'
+import { MongoMemoryServer } from 'mongodb-memory-server'
 import mongoose from '../src/services/mongoose'
 
 EventEmitter.defaultMaxListeners = Infinity
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000
 
 global.Array = Array
 global.Date = Date
@@ -23,18 +23,34 @@ global.parseFloat = parseFloat
 
 let mongoServer
 
-beforeAll(async () => {
-  mongoServer = new MongodbMemoryServer()
-  const mongoUri = await mongoServer.getUri()
-  await mongoose.connect(mongoUri, (err) => {
-    if (err) console.error(err)
-  })
-})
+const opts = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+};
 
-afterAll(async () => {
-  await mongoose.disconnect()
-  await mongoServer.stop()
-})
+mongoose.connection.on('connected', () => {
+  console.log('\x1b[32m%s \x1b[0m', 'Connected to in-memory MongoDB test environment');
+});
+
+mongoose.connection.on('disconnected', () => {
+  console.log('\x1b[31m%s \x1b[0m', 'Disconnected in-memory MongoDB test environment');
+});
+
+beforeAll(async () => {
+  try {
+    mongoServer = new MongoMemoryServer();
+    const mongoUri = await mongoServer.getUri();
+    await mongoose.connect(mongoUri, opts);
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  }
+});
+
+afterAll(async ()=> {
+  await mongoose.disconnect();
+  await mongoServer.stop();
+});
 
 afterEach(async () => {
   const { collections } = mongoose.connection

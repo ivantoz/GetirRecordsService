@@ -7,14 +7,11 @@ const recordsSchema = new Schema({
   value: {
     type: String
   },
-  counts: [{
-    type: Number
-  }],
+  counts: [Number],
   createdAt: {
     type: Date
   }
 }, {
-  timestamps: true,
   toJSON: {
     virtuals: true,
     transform: (obj, ret) => { delete ret._id }

@@ -20,8 +20,29 @@ export default (apiRoot, routes) => {
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json())
   app.use(apiRoot, routes)
+
   app.use(queryErrorHandler())
   app.use(bodyErrorHandler())
+
+  app.all('*', (req, res, next) => {
+    const err = new Error(`Can't find ${req.originalUrl} on this server!`)
+    err.status = 404
+    err.code = 404
+    err.statusCode = 404
+
+    next(err)
+  })
+
+  // error handler middleware
+  app.use((error, req, res, next) => {
+    res.status(error.status || 500).send({
+      error: {
+        code: error.code || 5,
+        status: error.status || 500,
+        message: error.message || 'Something went very wrong!'
+      }
+    })
+  })
 
   return app
 }

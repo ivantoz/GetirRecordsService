@@ -1,9 +1,13 @@
-export const success = (res, status) => (records) => {
-  if (records.length) {
-    const resp = { code: 0, msg: 'Success', records }
-    res.status(status || 200).json(resp)
-  } else {
-    res.status(400).json({ code: 400, msg: 'Bad request' })
-  }
-  return null
+const response = (res, status, code, msg, otherFields) => {
+  const output = { code, msg, ...otherFields }
+  res.status(status).json(output)
+}
+
+const success = (res) => (record) => {
+  response(res, 200, 0, 'Success', record)
+}
+
+module.exports = {
+  success,
+  response
 }

@@ -8,7 +8,7 @@ beforeEach(async () => {
 })
 
 describe('view', () => {
-  it.skip('returns simple view', () => {
+  it('returns simple view', () => {
     const view = records.view()
     expect(typeof view).toBe('object')
     expect(view.id).toBe(records.id)
@@ -19,7 +19,7 @@ describe('view', () => {
     expect(view.createdAt).toBeTruthy()
   })
 
-  it.skip('returns full view', () => {
+  it('returns full view', () => {
     const view = records.view(true)
     expect(typeof view).toBe('object')
     expect(view.id).toBe(records.id)

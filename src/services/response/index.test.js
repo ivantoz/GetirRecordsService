@@ -11,15 +11,9 @@ beforeEach(() => {
 })
 
 describe('success', () => {
-  it('responds with passed object and status 200', () => {
-    expect(response.success(res)(['record_object'])).toBeNull()
+  it('responds with success code, message and object', () => {
+    expect(response.success(res)({ prop: 'value' })).toBeUndefined()
     expect(res.status).toBeCalledWith(200)
-    expect(res.json).toBeCalledWith({ code: 0, msg: 'Success', records: ['record_object'] })
-  })
-
-  it('responds with passed object and status 400', () => {
-    expect(response.success(res)([])).toBeNull()
-    expect(res.status).toBeCalledWith(400)
-    expect(res.json).toBeCalledWith({ code: 400, msg: 'Bad request' })
+    expect(res.json).toBeCalledWith({ code: 0, msg: 'Success', prop: 'value' })
   })
 })
