@@ -21,7 +21,7 @@ const recordTwo = {
 const recordThree = {
   _id: mongoose.Types.ObjectId(),
   key: 'BqOIkrTF',
-  createdAt: '2015-06-03T01:01:52.237Z',
+  createdAt: new Date("2017-01-28"),
   counts: [1401,1950,1283],
   value: 'vHpHAzrmkwtt'
 }
@@ -35,19 +35,9 @@ const recordFour = {
   counts: [142,678,392]
 }
 
-
-const insertRecords = async (records) => {
-  try {
-    await Records.insertMany(records);
-  } catch(err) {
-    throw err
-  }
-};
-
 module.exports = {
   recordOne,
   recordTwo,
   recordThree,
   recordFour,
-  insertRecords
 };
