@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { middleware as body } from 'bodymen'
 import { search } from './controller'
+import { dateValidator, numberValidator } from '../../services/validator'
 export Records, { schema } from './model'
 
 const router = new Router()
@@ -55,19 +56,24 @@ router.post('/',
   body({
     startDate: {
       type: String,
-      required: true
+      required: true,
+      validate: dateValidator
     },
     endDate: {
       type: String,
-      required: true
+      required: true,
+      validate: dateValidator
     },
     minCount: {
       type: Number,
-      required: true
+      required: true,
+      trim: true,
+      validate: numberValidator
     },
     maxCount: {
       type: Number,
-      required: true
+      required: true,
+      validate: numberValidator
     }
   }),
   search)
