@@ -1,4 +1,5 @@
-import { success } from '../../services/response/'
+import { success, response } from '../../services/response/'
+import { validateRecordRequestParams } from '../../services/validator/'
 import { Records } from '.'
 
 export const create = ({ bodymen: { body } }, res, next) =>
@@ -7,8 +8,15 @@ export const create = ({ bodymen: { body } }, res, next) =>
     .then(success(res, 201))
     .catch(next)
 
-export const search = ({ bodymen: { body: { startDate, endDate, minCount, maxCount } } }, res, next) =>
-  Records.aggregate([
+export const search = (req, res, next) => {
+  const { bodymen: { body: { startDate, endDate, minCount, maxCount } } } = req
+
+  const validationErr = validateRecordRequestParams(req)
+  if (validationErr) {
+    return response(res, 400, -1, validationErr, [])
+  }
+
+  return Records.aggregate([
     {
       // Filter by dates.
       $match: {
@@ -52,6 +60,7 @@ export const search = ({ bodymen: { body: { startDate, endDate, minCount, maxCou
       }
     }
   ]).exec()
-    .then((records) => records)
+    .then((records) => ({ records }))
     .then(success(res))
     .catch(next)
+}
